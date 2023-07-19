@@ -15,3 +15,7 @@
   background-color: #eaeaea;
   border: 1px solid #ccc;
 }
+
+.square.hovered{
+  background-color: lightblue;
+}

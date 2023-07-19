@@ -12,8 +12,11 @@ const createGrid = () => {
 
     /* Loop to create 16 squares inside each row */
     for (let j = 0; j < 16; j++) {
-      var square = document.createElement("div");
+      let square = document.createElement("div");
       square.className = "square";
+      square.addEventListener("mouseover", function () {
+        square.classList.add("hovered");
+      })
       row.appendChild(square);
     }
     
