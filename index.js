@@ -3,10 +3,9 @@
 const createGrid = (num) => {
 
   num = 16;
- 
-  /* Assigning the container from The HTML file */
-  var container = document.getElementById("container");
-
+  console.log(num);
+  var container = document.createElement("div");
+  container.className = "container";
   /* creating 16 rows */
   for (let i = 0; i < num; i++) {
     var row = document.createElement("div");
@@ -21,10 +20,10 @@ const createGrid = (num) => {
       })
       row.appendChild(square);
     }
-    
+
     container.appendChild(row);
   }
-  
+  return container; 
 }
 
 const createButton = () => {
@@ -34,8 +33,11 @@ const createButton = () => {
   return button;
 }
 
-
 const initializePage = () => {
+
+  var container = document.createElement("div");
+  container.id = "container";
+
   var heading = document.createElement("h1");
   heading.textContent = "Etch A Sketch";
   document.body.appendChild(heading);
@@ -43,7 +45,8 @@ const initializePage = () => {
   var button = createButton();
   document.body.appendChild(button);
 
-  createGrid();
+  var grid = createGrid(16);
+  document.body.appendChild(grid);
 }
 
 /* Calling the function to initialize the page */
