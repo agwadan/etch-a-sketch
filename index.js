@@ -1,12 +1,17 @@
+/* GLOBAL VARIABLES */
+var container;
 
 /* Function to create the grid */
 const createGrid = (num) => {
 
-  num = 16;
-  console.log(num);
-  var container = document.createElement("div");
-  container.className = "container";
-  /* creating 16 rows */
+  if (!container) {
+    console.error("Container is not defined. Make sure to initialize the page first.");
+    return;
+}
+
+  container.innerHTML = '';
+  
+  /* Creating the number of rows passed into the function */
   for (let i = 0; i < num; i++) {
     var row = document.createElement("div");
     row.className = "row";
@@ -33,20 +38,32 @@ const createButton = () => {
   return button;
 }
 
-const initializePage = () => {
+const handleButtonClick = () => {
+  var userInput = prompt("Enter the number of squares on each side (e.g., 16 for a 16x16 grid):");
+  var gridSize = parseInt(userInput);
+  if (!isNaN(gridSize) && gridSize > 0) {
+      console.log(`The grid size is: ${gridSize}`);
+      createGrid(gridSize );
+  } else {
+      alert("Invalid input. Please enter a positive number.");
+  }
+}
 
-  var container = document.createElement("div");
-  container.id = "container";
+const initializePage = () => {
 
   var heading = document.createElement("h1");
   heading.textContent = "Etch A Sketch";
   document.body.appendChild(heading);
 
   var button = createButton();
+  button.addEventListener("click", handleButtonClick);
   document.body.appendChild(button);
 
-  var grid = createGrid(16);
-  document.body.appendChild(grid);
+  container = document.createElement("div");
+  container.id = "container";
+  document.body.appendChild(container);
+
+  createGrid(4);
 }
 
 /* Calling the function to initialize the page */
