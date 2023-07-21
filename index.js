@@ -63,7 +63,7 @@ const initializePage = () => {
   container.id = "container";
   document.body.appendChild(container);
 
-  createGrid(4);
+  createGrid(16);
 }
 
 /* Calling the function to initialize the page */
